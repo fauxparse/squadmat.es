@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Set up Rails app. Run this script immediately after cloning the codebase.
+# https://github.com/thoughtbot/guides/tree/master/protocol
+
+# Exit if any subcommand fails
+set -e
+
+# Set up Ruby dependencies via Bundler
+gem install bundler --conservative
+bundle check || bundle install
+
+# Set up database and add any development seed data
+bin/rake dev:prime
+
+# Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
+mkdir -p .git/safe
+
+# Only if this isn't CI
+# if [ -z "$CI" ]; then
+# fi
+          
+if heroku join --app squadmates-staging &> /dev/null; then
+  git remote add staging git@heroku.com:squadmates-staging.git || true
+  printf 'You are a collaborator on the "squadmates-staging" Heroku app
+'
+else
+  printf 'Ask for access to the "squadmates-staging" Heroku app
+'
+fi
+
+          
+if heroku join --app squadmates-production &> /dev/null; then
+  git remote add production git@heroku.com:squadmates-production.git || true
+  printf 'You are a collaborator on the "squadmates-production" Heroku app
+'
+else
+  printf 'Ask for access to the "squadmates-production" Heroku app
+'
+fi
+
+
+          git config heroku.remote staging
