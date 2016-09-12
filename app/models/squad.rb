@@ -1,6 +1,6 @@
 class Squad < ApplicationRecord
   has_many :members
-  has_many :managers, -> { where(manager: true) }, class_name: "Member"
+  has_many :managers, -> { where(manager: true) }, class_name: 'Member'
 
   acts_as_url :name,
     url_attribute: :slug,

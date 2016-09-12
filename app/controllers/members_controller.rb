@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_action :load_squad
-  before_action :load_member, only: [:show, :edit, :update, :destroy]
+  before_action :load_member, only: %i(show edit update destroy)
 
   def show
   end

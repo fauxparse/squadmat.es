@@ -1,5 +1,5 @@
 class SquadsController < ApplicationController
-  before_action :load_squad, only: %i[show edit update destroy]
+  before_action :load_squad, only: %i(show edit update destroy)
 
   def show
   end

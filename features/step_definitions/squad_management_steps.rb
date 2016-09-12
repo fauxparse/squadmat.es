@@ -7,8 +7,8 @@ When(/^I visit the squad page$/) do
 end
 
 When(/^I enter the details of a new squad member$/) do
-  fill_in "Name", with: new_member_details[:name]
-  fill_in "Email", with: new_member_details[:email]
+  fill_in 'Name', with: new_member_details[:name]
+  fill_in 'Email', with: new_member_details[:email]
 end
 
 When(/^I click on a squad member$/) do
@@ -16,7 +16,7 @@ When(/^I click on a squad member$/) do
 end
 
 When(/^I update the squad member's details$/) do
-  step("I enter the details of a new squad member")
+  step('I enter the details of a new squad member')
 end
 
 Then(/^I should be on the squad page$/) do
@@ -24,7 +24,6 @@ Then(/^I should be on the squad page$/) do
 end
 
 Then(/^I should see the new squad member's details$/) do
-  new_member = squad.members.find_by!(email: new_member_details[:email])
   expect(page).to have_content(new_member_details[:name])
 end
 

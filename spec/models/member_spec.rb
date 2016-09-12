@@ -6,11 +6,11 @@ RSpec.describe Member, type: :model do
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :email }
 
-  context "with a gross-looking email address" do
+  context 'with a gross-looking email address' do
     subject(:member) { FactoryGirl.create(:member, email: " Ripley@sula.co\t") }
 
-    it "sanitizes the email address" do
-      expect(member.email).to eq "ripley@sula.co"
+    it 'sanitizes the email address' do
+      expect(member.email).to eq 'ripley@sula.co'
     end
   end
 end

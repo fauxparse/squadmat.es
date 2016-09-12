@@ -13,8 +13,8 @@ module SquadHelpers
 
   def new_member_details
     @new_member_details ||= {
-      name: "Bishop",
-      email: "bishop@sula.co"
+      name: 'Bishop',
+      email: 'bishop@sula.co'
     }
   end
 end
