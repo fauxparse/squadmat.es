@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911214020) do
+ActiveRecord::Schema.define(version: 20160911225516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,4 +30,25 @@ ActiveRecord::Schema.define(version: 20160911214020) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
+  create_table "members", force: :cascade do |t|
+    t.integer  "squad_id"
+    t.string   "name",       limit: 64
+    t.string   "email",      limit: 256
+    t.boolean  "manager",                default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.index ["squad_id", "email"], name: "index_members_on_squad_id_and_email", unique: true, using: :btree
+    t.index ["squad_id", "id"], name: "index_members_on_squad_id_and_id", unique: true, using: :btree
+    t.index ["squad_id"], name: "index_members_on_squad_id", using: :btree
+  end
+
+  create_table "squads", force: :cascade do |t|
+    t.string   "name",       limit: 64
+    t.string   "slug",       limit: 32
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["slug"], name: "index_squads_on_slug", unique: true, using: :btree
+  end
+
+  add_foreign_key "members", "squads", on_delete: :cascade
 end

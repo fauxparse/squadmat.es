@@ -1,0 +1,4 @@
+<%= form_for @member, url: squad_members_path(@squad) do |form| %>
+  <%= render "form", form: form %>
+  <%= form.button t(".save"), type: :submit %>
+<% end %>

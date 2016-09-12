@@ -22,6 +22,8 @@ gem "suspenders"
 gem "title"
 gem "uglifier"
 
+gem "stringex"
+
 group :development do
   gem "listen"
   gem "spring"
