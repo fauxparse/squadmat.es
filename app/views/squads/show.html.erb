@@ -1,0 +1,5 @@
+<ul>
+  <%= render @squad.members %>
+</ul>
+
+<%= link_to t(".add"), new_squad_member_path(@squad), role: :button %>

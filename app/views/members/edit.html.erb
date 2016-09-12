@@ -1,0 +1,5 @@
+<%= form_for @member, url: squad_member_path(@squad, @member) do |form| %>
+  <%= render "form", form: form %>
+  <%= form.button t(".save"), type: :submit %>
+  <%= link_to t(".delete"), squad_member_path(@squad, @member), method: :delete, role: :button %>
+<% end %>

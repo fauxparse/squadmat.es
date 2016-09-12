@@ -22,12 +22,15 @@ gem "suspenders"
 gem "title"
 gem "uglifier"
 
+gem "stringex"
+
 group :development do
   gem "listen"
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-commands-cucumber"
   gem "web-console"
+  gem "rubocop"
 end
 
 group :development, :test do

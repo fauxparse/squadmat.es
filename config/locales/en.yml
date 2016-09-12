@@ -17,3 +17,16 @@ en:
 
   titles:
     application: Squadmates
+
+  squads:
+    show:
+      add: "Add squad member"
+
+  members:
+    new:
+      save: "Add"
+    show:
+      edit: "Edit"
+    edit:
+      save: "Update"
+      delete: "Remove"
