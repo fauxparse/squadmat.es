@@ -27,5 +27,17 @@ FactoryGirl.define do
     factory :manager do
       manager true
     end
+
+    trait :authenticated_user do
+      after(:create) do |member, _|
+        member.update(user: FactoryGirl.create(:user, email: member.email))
+      end
+    end
+  end
+
+  factory :user do
+    email { generate(:email) }
+    password 'p4$$w0rd'
+    password_confirmation 'p4$$w0rd'
   end
 end

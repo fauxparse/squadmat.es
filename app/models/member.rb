@@ -2,6 +2,7 @@ class Member < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   belongs_to :squad
+  belongs_to :user, optional: true
 
   before_validation :sanitize_email_address, if: :email?
 

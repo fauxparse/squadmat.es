@@ -13,6 +13,10 @@ class Squad < ApplicationRecord
 
   scope :with_members, -> { includes(:members) }
 
+  def to_s
+    name
+  end
+
   def to_param
     slug
   end
