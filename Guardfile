@@ -116,3 +116,8 @@ guard "cucumber", cucumber_options do
     Dir[File.join("**/#{m[1]}.feature")][0] || "features"
   end
 end
+
+guard :rubocop do
+  watch(%r{.+\.rb$})
+  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
+end
